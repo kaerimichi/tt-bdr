@@ -9,6 +9,22 @@ class Atividade extends CI_Model {
 	public		$estado;
 	public		$posicao_lista;
 
+	// - - - - - - - - - - -
+
+	public function set_id_atividade ($val) {
+
+		$this->id_atividade = $val;
+
+	}
+
+	public function get_id_atividade () {
+
+		return $this->id_atividade;
+
+	}
+
+	// - - - - - - - - - - -
+
 	/**
 	 * Inclui uma atividade
 	 *
@@ -20,6 +36,26 @@ class Atividade extends CI_Model {
 		// definindo a data de inclusão automaticamente
 
 		$this->data_inclusao = date("Y-m-d H:i:s");
+
+		// definindo a posição da atividade como última da lista
+
+		$sql = "SELECT MAX(posicao_lista) AS posicao FROM atividade;";
+
+		$query = $this->db->query($sql);
+
+		// verifica se há algum item na lista pra contar
+
+		if ($query->num_rows() > 0) {
+
+			$row = $query->row();
+
+			$this->posicao_lista = $row->posicao + 1;
+
+		} else {
+
+			$this->posicao_lista = 1;
+
+		}
 
 		// verifica as informações do objeto
 
@@ -93,6 +129,7 @@ class Atividade extends CI_Model {
 			$this->descricao			= $row->descricao;
 			$this->data_inclusao	= $row->data_inclusao;
 			$this->estado					= $row->estado;
+			$this->posicao_lista	= $row->posicao_lista;
 
 		}
 
@@ -113,14 +150,14 @@ class Atividade extends CI_Model {
 	}
 
 	/**
-	 * Exclui uma atividade
+	 * Exclui uma atividade (marca como excluída)
 	 *
 	 * @return		null
 	 */
 
 	public function excluir () {
 
-		$sql = "DELETE FROM atividade WHERE id_atividade = '$this->id_atividade';";
+		$sql = "UPDATE atividade SET excluido = '1' WHERE id_atividade = '$this->id_atividade';";
 
 		// verifica se a consulta foi executada com sucesso
 
@@ -156,7 +193,7 @@ class Atividade extends CI_Model {
 	 * @return		null
 	 */
 
-	public function marcar_atividade ($id_atividade, $estado = 1) {
+	public function marcar ($id_atividade, $estado = 1) {
 
 		// verifica se o ID da atividade foi informado
 
@@ -166,7 +203,13 @@ class Atividade extends CI_Model {
 
 			if ($estado == 0 || $estado == 1) {
 
-				$sql = "UPDATE atividade SET estado = '$estado';";
+				$sql = "UPDATE atividade SET estado = '$estado' WHERE id_atividade = '$id_atividade';";
+
+				if (!$this->db->query($sql)) {
+
+					throw new Exception('Sua tarefa não pôde ser marcada.');
+
+				}
 
 			} else {
 
