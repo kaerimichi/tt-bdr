@@ -61,11 +61,43 @@
 
 				<?php foreach ($atividades as $atividade) : ?>
 
-					<li id="ativ_<?=$atividade->id_atividade?>">
+					<?php if ($atividade->estado == 1) : ?>
 
-						<i class="icon-search"></i>&nbsp;
+						<li id="ativ_<?=$atividade->id_atividade?>" style="opacity: 0.8;">
+
+					<?php else : ?>
+
+						<li id="ativ_<?=$atividade->id_atividade?>">
+
+					<?php endif ?>
+
+						<?php if ($atividade->estado == 1) : ?>
+
+							<button class="btn btn-success btn-mini" disabled><i class="icon-ok"></i></button>&nbsp;
+
+						<?php else : ?>
+
+							<button class="btn btn-warning btn-mini"><i class="icon-ok"></i></button>&nbsp;
+
+						<?php endif ?>
 
 						<b><?=$atividade->titulo?></b> : <?=$atividade->descricao?>
+
+						<div class="btn-group">
+
+							<?php if ($atividade->estado == 1) : ?>
+
+								<button class="btn btn-mini" disabled>Editar</button>
+								<button class="btn btn-mini">Excluir</button>
+
+							<?php else : ?>
+
+								<button class="btn btn-mini">Editar</button>
+								<button class="btn btn-mini">Excluir</button>
+
+							<?php endif ?>
+
+						</div>
 
 					</li>
 

@@ -3,3 +3,5 @@
 .table .titulo{ font-weight: bold; }
 
 .container ul li { list-style: none; padding: 14px; background-color: #CCC; cursor: pointer; margin-bottom: 10px; }
+
+.btn-group { float: right; }
