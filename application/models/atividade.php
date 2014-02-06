@@ -198,15 +198,19 @@ class Atividade extends CI_Model {
 
 	public function listar ($periodo = 'semana') {
 
-		//
-
-		$data_atual = date('Y-m-d H:i:s');
+		// $data_atual = date('Y-m-d H:i:s');
 
 		$sql = "SELECT * FROM atividade";
 
-		if ($periodo == 'semana') {
+		$query = $this->db->query($sql);
 
-			$sql .= " WHERE ";
+		if ($query->num_rows() > 0) {
+
+			return $query->result();
+
+		} else {
+
+			throw new Exception('Ocorreu um erro ao listar as atividades.');
 
 		}
 
@@ -263,6 +267,14 @@ class Atividade extends CI_Model {
 	 */
 
 	public function atualizar_ordenacao ($ordenacao) {
+
+		foreach ($ordenacao as $valor) {
+
+			$sql = "UPDATE atividade SET posicao_lista = '$valor'";
+
+			$this->db->query($sql);
+
+		}
 
 		return NULL;
 

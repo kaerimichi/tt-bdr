@@ -16,7 +16,7 @@ class Webservice extends CI_Controller {
 		return NULL;
 
 	}
-	
+
 	public function carregar () {
 
 		$this->load->model('atividade');
@@ -73,4 +73,4 @@ class Webservice extends CI_Controller {
 }
 
 /* End of file webservice.php */
-/* Location: application/controllers/webservice.php */
+/* Location: ./application/controllers/webservice.php */

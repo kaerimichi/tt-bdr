@@ -12,6 +12,7 @@
 	<!-- Estilos -->
 	<link rel="stylesheet" href="<?=base_url()?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/css/main.css">
 	<!-- Scripts -->
 	<script src="<?=base_url()?>assets/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
@@ -20,6 +21,38 @@
 </head>
 
 <body>
+
+	<section class="container">
+
+		<h1>Lista de Atividades</h1>
+
+		<table class="table">
+
+			<tr class="titulo">
+
+				<td>&nbsp;</td>
+				<td>Título</td>
+				<td>Descrição</td>
+				<td>&nbsp;</td>
+
+			</tr>
+
+			<?php foreach ($atividades as $atividade) : ?>
+
+				<tr>
+
+					<td>&nbsp;</td>
+					<td><?=$atividade->titulo?></td>
+					<td><?=$atividade->descricao?></td>
+					<td>&nbsp;</td>
+
+				</tr>
+
+			<?php endforeach ?>
+
+		</table>
+
+	</section>
 
 </body>
 

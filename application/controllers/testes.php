@@ -6,7 +6,11 @@ class Testes extends CI_Controller {
 
 		$this->load->model('atividade');
 
-		$this->atividade->listar();
+		$lista = $this->atividade->listar();
+
+		echo '<pre>';
+		print_r($lista);
+		echo '</pre>';
 
 	}
 

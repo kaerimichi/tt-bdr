@@ -4,7 +4,9 @@ class Main extends CI_Controller {
 
 	public function index () {
 
-		$dados = NULL;
+		$this->load->model('atividade');
+
+		$dados['atividades'] = $this->atividade->listar();
 
 		// chamando a view da listagem
 
