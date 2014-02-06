@@ -108,8 +108,16 @@ function excluirAtividade (id_atividade) {
 
 function modalNovaAtividade () {
 
-	$('.modalPlaceholder').load(urlBase + 'main/modalNovaAtividade');
+	$('.modalPlaceholder').load(
 
-	$('#modalNovaAtividade').modal('show');
+		urlBase + 'main/modalNovaAtividade',
+
+		function () {
+
+			$('#modalNovaAtividade').modal('show');
+
+		}
+
+	);
 
 }

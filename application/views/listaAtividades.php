@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="<?=base_url()?>assets/css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/css/main.css">
 	<!-- Scripts -->
-	<script src="<?=base_url()?>assets/js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url()?>assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url()?>assets/js/jquery-ui-1.7.1.custom.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url()?>assets/js/main.js" type="text/javascript" charset="utf-8" async defer></script>
