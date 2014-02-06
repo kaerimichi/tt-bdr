@@ -1,3 +1,5 @@
 @charset "utf-8";
 
 .table .titulo{ font-weight: bold; }
+
+.container ul li { list-style: none; padding: 14px; background-color: #CCC; cursor: pointer; margin-bottom: 10px; }

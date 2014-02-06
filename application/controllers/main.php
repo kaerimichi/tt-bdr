@@ -14,6 +14,14 @@ class Main extends CI_Controller {
 
 	}
 
+	public function atualizarOrdem () {
+
+		$this->load->model('atividade');
+
+		$this->atividade->atualizar_ordenacao($_POST['ativ']);
+
+	}
+
 }
 
 /* End of file main.php */

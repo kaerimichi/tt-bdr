@@ -14,9 +14,40 @@
 	<link rel="stylesheet" href="<?=base_url()?>assets/css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/css/main.css">
 	<!-- Scripts -->
-	<script src="<?=base_url()?>assets/js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="<?=base_url()?>assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="<?=base_url()?>assets/js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url()?>assets/js/jquery-ui-1.7.1.custom.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<?=base_url()?>assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url()?>assets/js/main.js" type="text/javascript" charset="utf-8" async defer></script>
+
+	<script>
+
+	var urlBase = 'http://localhost/projects/tt-bdr/';
+
+	$(document).ready(function() {
+
+		$(function() {
+
+			$(".container ul").sortable({
+
+				opacity: 0.6, cursor: 'move', update: function() {
+
+					var order = $(this).sortable("serialize");
+
+					$.post(urlBase + 'main/atualizarOrdem', order, function(theResponse){
+
+						$("#resposta").html(theResponse);
+
+					});
+
+				}
+
+			});
+
+		});
+
+	});
+
+	</script>
 
 </head>
 
@@ -26,33 +57,25 @@
 
 		<h1>Lista de Atividades</h1>
 
-		<table class="table">
+			<ul>
 
-			<tr class="titulo">
+				<?php foreach ($atividades as $atividade) : ?>
 
-				<td>&nbsp;</td>
-				<td>Título</td>
-				<td>Descrição</td>
-				<td>&nbsp;</td>
+					<li id="ativ_<?=$atividade->id_atividade?>">
 
-			</tr>
+						<i class="icon-search"></i>&nbsp;
 
-			<?php foreach ($atividades as $atividade) : ?>
+						<b><?=$atividade->titulo?></b> : <?=$atividade->descricao?>
 
-				<tr>
+					</li>
 
-					<td>&nbsp;</td>
-					<td><?=$atividade->titulo?></td>
-					<td><?=$atividade->descricao?></td>
-					<td>&nbsp;</td>
+				<?php endforeach ?>
 
-				</tr>
-
-			<?php endforeach ?>
-
-		</table>
+			</ul>
 
 	</section>
+
+	<div id="resposta"></div>
 
 </body>
 
