@@ -190,29 +190,34 @@ class Atividade extends CI_Model {
 	}
 
 	/**
+	 * Exclui as atividades finalizadas (marca como excluídas)
+	 *
+	 * @return		null
+	 */
+
+	public function excluirFinalizadas () {
+
+		$sql = "UPDATE atividade SET excluido = '1' WHERE estado = '1';";
+
+		$this->db->query($sql);
+
+		return NULL;
+
+	}
+
+	/**
 	 * Lista as atividades
 	 *
-	 * @param			string		$periodo					Período (semana ou dia)
 	 * @return		object
 	 */
 
-	public function listar ($periodo = 'semana') {
+	public function listar () {
 
-		// $data_atual = date('Y-m-d H:i:s');
-
-		$sql = "SELECT * FROM atividade";
+		$sql = "SELECT * FROM atividade WHERE excluido = '0' ORDER BY posicao_lista ASC;";
 
 		$query = $this->db->query($sql);
 
-		if ($query->num_rows() > 0) {
-
-			return $query->result();
-
-		} else {
-
-			throw new Exception('Ocorreu um erro ao listar as atividades.');
-
-		}
+		return $query->result();
 
 	}
 
@@ -229,7 +234,7 @@ class Atividade extends CI_Model {
 
 		// verifica se o ID da atividade foi informado
 
-		if ($id_atividade <> NULL && is_integer($id_atividade)) {
+		if ($id_atividade <> NULL) {
 
 			// verifica se foi informado um estado válido
 

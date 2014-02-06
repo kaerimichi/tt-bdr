@@ -10,7 +10,57 @@ class Main extends CI_Controller {
 
 		// chamando a view da listagem
 
-		$this->load->view('lista_atividades', $dados);
+		$this->load->view('listaAtividades', $dados);
+
+	}
+
+	public function marcarAtividade () {
+
+		try {
+
+			$this->load->model('atividade');
+
+			$this->atividade->marcar($_POST['id_atividade']);
+
+		}
+
+		catch (Exception $e) {
+
+			$dados['msgErro'] = $e->getMessage();
+
+		}
+
+		echo json_encode($dados);
+
+	}
+
+	public function excluirAtividadesFinalizadas () {
+
+		$this->load->model('atividade');
+
+		$this->atividade->excluirFinalizadas();
+
+	}
+
+	public function excluirAtividade () {
+
+		try {
+
+			$this->load->model('atividade');
+
+			$this->atividade->set_id_atividade($_POST['id_atividade']);
+
+			$this->atividade->excluir();
+
+		}
+
+		catch (Exception $e) {
+
+			$dados['msgErro'] = $e->getMessage();
+
+		}
+
+		echo json_encode($dados);
 
 	}
 
@@ -19,6 +69,12 @@ class Main extends CI_Controller {
 		$this->load->model('atividade');
 
 		$this->atividade->atualizar_ordenacao($_POST['ativ']);
+
+	}
+
+	public function modalNovaAtividade () {
+
+		$this->load->view('modalNovaAtividade');
 
 	}
 

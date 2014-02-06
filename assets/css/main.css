@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .table .titulo{ font-weight: bold; }
-
-.container ul li { list-style: none; padding: 14px; background-color: #CCC; cursor: pointer; margin-bottom: 10px; }
-
+.container ul { list-style: none; margin: 0; }
+.container ul li { display: block; padding: 14px; background-color: #CCC; cursor: pointer; margin-bottom: 10px; }
 .btn-group { float: right; }
+.grupo_botoes_direita { margin-top: 16px; }

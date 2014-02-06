@@ -19,43 +19,22 @@
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url()?>assets/js/main.js" type="text/javascript" charset="utf-8" async defer></script>
 
-	<script>
-
-	var urlBase = 'http://localhost/projects/tt-bdr/';
-
-	$(document).ready(function() {
-
-		$(function() {
-
-			$(".container ul").sortable({
-
-				opacity: 0.6, cursor: 'move', update: function() {
-
-					var order = $(this).sortable("serialize");
-
-					$.post(urlBase + 'main/atualizarOrdem', order, function(theResponse){
-
-						$("#resposta").html(theResponse);
-
-					});
-
-				}
-
-			});
-
-		});
-
-	});
-
-	</script>
-
 </head>
 
 <body>
 
 	<section class="container">
 
-		<h1>Lista de Atividades</h1>
+		<div class="btn-group grupo_botoes_direita">
+
+			<button class="btn btn-small btn-primary" onclick="modalNovaAtividade()">Incluir</button>
+			<button class="btn btn-small" onclick="excluirFinalizadas()">Excluir Finalizadas</button>
+
+		</div>
+
+		<h3>Atividades</h3>
+
+		<?php if (count($atividades) > 0) : ?>
 
 			<ul>
 
@@ -77,7 +56,7 @@
 
 						<?php else : ?>
 
-							<button class="btn btn-warning btn-mini"><i class="icon-ok"></i></button>&nbsp;
+							<button class="btn btn-warning btn-mini" onclick="marcarAtividade('<?=$atividade->id_atividade?>')"><i class="icon-ok"></i></button>&nbsp;
 
 						<?php endif ?>
 
@@ -88,12 +67,12 @@
 							<?php if ($atividade->estado == 1) : ?>
 
 								<button class="btn btn-mini" disabled>Editar</button>
-								<button class="btn btn-mini">Excluir</button>
+								<button class="btn btn-mini" onclick="excluirAtividade('<?=$atividade->id_atividade?>')">Excluir</button>
 
 							<?php else : ?>
 
 								<button class="btn btn-mini">Editar</button>
-								<button class="btn btn-mini">Excluir</button>
+								<button class="btn btn-mini" onclick="excluirAtividade('<?=$atividade->id_atividade?>')">Excluir</button>
 
 							<?php endif ?>
 
@@ -105,9 +84,17 @@
 
 			</ul>
 
+		<?php else : ?>
+
+			<p>Não existem atividades. Ainda!</p>
+
+		<?php endif ?>
+
 	</section>
 
 	<div id="resposta"></div>
+
+	<section class="modalPlaceholder"></section>
 
 </body>
 
