@@ -4,7 +4,9 @@ class Testes extends CI_Controller {
 
 	public function index () {
 
-		//
+		$this->load->model('atividade');
+
+		$this->atividade->listar();
 
 	}
 
