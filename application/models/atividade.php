@@ -192,13 +192,23 @@ class Atividade extends CI_Model {
 	/**
 	 * Lista as atividades
 	 *
-	 * @param			integer		$id_atividade			Código da atividade
+	 * @param			string		$periodo					Período (semana ou dia)
 	 * @return		object
 	 */
 
-	public function listar ($parametros) {
+	public function listar ($periodo = 'semana') {
 
 		//
+
+		$data_atual = date('Y-m-d H:i:s');
+
+		$sql = "SELECT * FROM atividade";
+
+		if ($periodo == 'semana') {
+
+			$sql .= " WHERE ";
+
+		}
 
 	}
 
