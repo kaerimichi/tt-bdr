@@ -4,7 +4,11 @@ class Main extends CI_Controller {
 
 	public function index () {
 
-		//
+		$dados = NULL;
+
+		// chamando a view da listagem
+
+		$this->load->view('lista_atividades', $dados);
 
 	}
 
