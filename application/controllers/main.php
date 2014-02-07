@@ -37,6 +37,31 @@ class Main extends CI_Controller {
 
 	}
 
+	public function atualizarAtividade () {
+
+		try {
+
+			$this->load->model('atividade');
+
+			$this->atividade->set_id_atividade($_POST['id_atividade']);
+
+			$this->atividade->titulo			= trim($_POST['tituloAtividade']);
+			$this->atividade->descricao		= trim($_POST['descricaoAtividade']);
+
+			$this->atividade->atualizar();
+
+		}
+
+		catch (Exception $e) {
+
+			$dados['msgErro'] = $e->getMessage();
+
+		}
+
+		echo json_encode($dados);
+
+	}
+
 	public function marcarAtividade () {
 
 		try {
@@ -107,7 +132,9 @@ class Main extends CI_Controller {
 
 		$dados['idAtividade'] = $_POST['id_atividade'];
 
-		$this->atividade->carregar($_POST['id_atividade']);
+		$this->atividade->set_id_atividade($_POST['id_atividade']);
+
+		$this->atividade->carregar();
 
 		$dados['tituloAtividade']			= $this->atividade->titulo;
 		$dados['descricaoAtividade']	= $this->atividade->descricao;

@@ -33,7 +33,7 @@
   <div class="modal-footer">
 
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-    <button class="btn btn-primary" onclick="atualizarAtividade('<?=$idAtividade?>')">OK</button>
+    <button class="btn btn-primary" onclick="salvarAtividade('<?=$idAtividade?>')">OK</button>
 
   </div>
 

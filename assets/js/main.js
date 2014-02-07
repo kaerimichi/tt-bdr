@@ -145,16 +145,29 @@ function modalEditarAtividade (id_atividade) {
 
 }
 
-function incluirAtividade () {
+function salvarAtividade (id_atividade) {
+
+	if (id_atividade === null) {
+
+		metodo	= 'incluirAtividade';
+		modal		= 'modalNovaAtividade';
+
+	} else {
+
+		metodo	= 'atualizarAtividade';
+		modal		= 'modalEditarAtividade';
+
+	}
 
 	$.post(
 
-		urlBase + 'main/incluirAtividade',
+		urlBase + 'main/' + metodo,
 
 		{
 
-			'tituloAtividade'			: $('#modalNovaAtividade :input[name=tituloAtividade]').val(),
-			'descricaoAtividade'	: $('#modalNovaAtividade :input[name=descricaoAtividade]').val()
+			'id_atividade'				: id_atividade,
+			'tituloAtividade'			: $('#' + modal + ' :input[name=tituloAtividade]').val(),
+			'descricaoAtividade'	: $('#' + modal + ' :input[name=descricaoAtividade]').val()
 
 		},
 

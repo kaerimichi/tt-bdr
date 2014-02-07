@@ -147,7 +147,7 @@ class Atividade extends CI_Model {
 
 		// verifica se pelo menos o título foi informado
 
-		if ($this->titulo <> NULL && is_string($this->titulo)) {
+		if ($this->titulo <> NULL) {
 
 			$sql = "UPDATE atividade SET titulo = '$this->titulo', descricao = '$this->descricao' WHERE id_atividade = '$this->id_atividade';";
 
