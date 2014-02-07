@@ -5,3 +5,4 @@
 .container ul li { display: block; padding: 14px; background-color: #CCC; cursor: pointer; margin-bottom: 10px; }
 .btn-group { float: right; }
 .grupo_botoes_direita { margin-top: 16px; }
+.formulario { width: 100%; }

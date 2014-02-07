@@ -67,7 +67,7 @@ class Atividade extends CI_Model {
 
 				if ($valor == NULL || !is_string($valor)) {
 
-					throw new Exception('O título informado é inválido. Cadastro cancelado.');
+					throw new Exception('O título informado é inválido.');
 
 				}
 

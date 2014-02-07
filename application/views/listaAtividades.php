@@ -60,7 +60,7 @@
 
 						<?php endif ?>
 
-						<b><?=$atividade->titulo?></b> : <?=$atividade->descricao?>
+						<b><?=$atividade->titulo?></b> <?php if ($atividade->descricao <> NULL) { echo ' : ' . $atividade->descricao; } ?>
 
 						<div class="btn-group">
 
@@ -71,7 +71,7 @@
 
 							<?php else : ?>
 
-								<button class="btn btn-mini">Editar</button>
+								<button class="btn btn-mini" onclick="modalEditarAtividade('<?=$atividade->id_atividade?>')">Editar</button>
 								<button class="btn btn-mini" onclick="excluirAtividade('<?=$atividade->id_atividade?>')">Excluir</button>
 
 							<?php endif ?>

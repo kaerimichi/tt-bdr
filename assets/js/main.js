@@ -115,8 +115,64 @@ function modalNovaAtividade () {
 		function () {
 
 			$('#modalNovaAtividade').modal('show');
+			$('#modalNovaAtividade').on('shown', function () {
+
+				$('#modalNovaAtividade :input[name=tituloAtividade]').focus();
+
+			});
 
 		}
+
+	);
+
+}
+
+function modalEditarAtividade (id_atividade) {
+
+	$('.modalPlaceholder').load(
+
+		urlBase + 'main/modalEditarAtividade',
+
+		{ 'id_atividade' : id_atividade },
+
+		function (data) {
+
+			$('#modalEditarAtividade').modal('show');
+
+		}
+
+	);
+
+}
+
+function incluirAtividade () {
+
+	$.post(
+
+		urlBase + 'main/incluirAtividade',
+
+		{
+
+			'tituloAtividade'			: $('#modalNovaAtividade :input[name=tituloAtividade]').val(),
+			'descricaoAtividade'	: $('#modalNovaAtividade :input[name=descricaoAtividade]').val()
+
+		},
+
+		function (data) {
+
+			if (data !== null) {
+
+				alert(data.msgErro);
+
+			} else {
+
+				window.location = urlBase;
+
+			}
+
+		},
+
+		'json'
 
 	);
 

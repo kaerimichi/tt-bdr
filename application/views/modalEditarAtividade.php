@@ -1,10 +1,10 @@
-<div id="modalNovaAtividade" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="modalEditarAtividade" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
 
   <div class="modal-header">
 
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 
-    <h3>Incluir Atividade</h3>
+    <h3>Editar Atividade</h3>
 
   </div>
 
@@ -15,14 +15,14 @@
       <tr>
 
         <td>Título <span style="color: red;">*</span></td>
-        <td><input name="tituloAtividade" type="text"></td>
+        <td><input name="tituloAtividade" type="text" value="<?=$tituloAtividade?>"></td>
 
       </tr>
 
       <tr>
 
         <td>Descrição</td>
-        <td><textarea name="descricaoAtividade"></textarea></td>
+        <td><textarea name="descricaoAtividade"><?=$descricaoAtividade?></textarea></td>
 
       </tr>
 
@@ -33,7 +33,7 @@
   <div class="modal-footer">
 
     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-    <button class="btn btn-primary" onclick="incluirAtividade()">OK</button>
+    <button class="btn btn-primary" onclick="atualizarAtividade('<?=$idAtividade?>')">OK</button>
 
   </div>
 
