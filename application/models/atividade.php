@@ -273,11 +273,15 @@ class Atividade extends CI_Model {
 
 	public function atualizar_ordenacao ($ordenacao) {
 
+		$i = 1;
+
 		foreach ($ordenacao as $valor) {
 
-			$sql = "UPDATE atividade SET posicao_lista = '$valor'";
+			$sql = "UPDATE atividade SET posicao_lista = '$valor' WHERE id_atividade = '$i'";
 
 			$this->db->query($sql);
+
+			$i++;
 
 		}
 
