@@ -17,7 +17,7 @@
 	<script src="<?=base_url()?>assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url()?>assets/js/jquery-ui-1.7.1.custom.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="<?=base_url()?>assets/js/main.js" type="text/javascript" charset="utf-8" async defer></script>
+	<script src="<?=base_url()?>assets/js/main.min.js" type="text/javascript" charset="utf-8" async defer></script>
 
 </head>
 
@@ -28,6 +28,7 @@
 		<div class="btn-group grupo_botoes_direita">
 
 			<button class="btn btn-small btn-primary" onclick="modalNovaAtividade()">Incluir</button>
+			<button class="btn btn-small" onclick="window.location='<?=base_url()?>webservice'">Web Service</button>
 			<button class="btn btn-small" onclick="excluirFinalizadas()">Excluir Finalizadas</button>
 
 		</div>
