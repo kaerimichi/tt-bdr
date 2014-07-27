@@ -56,7 +56,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = 'system';
+	$system_path = '/dados/web/frameworks/ci-2.2.0/system';
 
 /*
  *---------------------------------------------------------------
