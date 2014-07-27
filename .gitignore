@@ -1,2 +1,3 @@
 .htaccess
 application/config/database.php
+assets/js/main.min.js
